@@ -35,6 +35,11 @@
 *   **목적:** 광고 인벤토리가 승인된 판매자를 통해서만 판매되도록 하여 투명성을 높이고 무단 인벤토리 판매를 방지합니다.
 *   **내용:** `google.com, pub-8670478697060334, DIRECT, f08c47fec0942fa0`
 
+## Google AdSense 계정 메타태그 추가
+
+*   **기능:** Google AdSense 계정 메타태그를 `index.html`의 `<head>` 섹션에 추가하여 사이트 소유권을 확인하고 AdSense 계정과 연결합니다.
+*   **내용:** `<meta name="google-adsense-account" content="ca-pub-8670478697060334">`
+
 ## 디자인
 
 *   **색상 팔레트:** 식욕을 돋우면서도 야간의 분위기와 어울리는 따뜻하고 매력적인 색상 조합을 사용합니다.
@@ -80,6 +85,8 @@
 9.  **`style.css` 수정:** 위에 계획된 디자인 개선 사항을 반영합니다. (폰트, 색상, 간격, 애니메이션 등) (완료)
 10. **`blueprint.md` 업데이트:** Google AdSense 통합 섹션 추가. (완료)
 11. **`index.html` 수정:** Google AdSense 스크립트 추가. (완료)
-12. **`blueprint.md` 업데이트:** `ads.txt` 파일 추가 섹션 추가.
-13. **`ads.txt` 파일 생성 및 내용 추가.**
-14. **GitHub 배포:** 모든 변경사항을 커밋하고 GitHub 원격 저장소에 푸시합니다.
+12. **`blueprint.md` 업데이트:** `ads.txt` 파일 추가 섹션 추가. (완료)
+13. **`ads.txt` 파일 생성 및 내용 추가.** (완료)
+14. **`blueprint.md` 업데이트:** Google AdSense 계정 메타태그 추가 섹션 추가.
+15. **`index.html` 수정:** Google AdSense 계정 메타태그 추가.
+16. **GitHub 배포:** 모든 변경사항을 커밋하고 GitHub 원격 저장소에 푸시합니다.
