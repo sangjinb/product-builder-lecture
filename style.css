@@ -1,1 +1,66 @@
-/* Add styles here */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+:root {
+  --background-color: #f0f2f5;
+  --container-bg: #ffffff;
+  --primary-color: #4a90e2;
+  --primary-hover-color: #357abd;
+  --text-color: #333333;
+  --ball-text-color: #ffffff;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --ball-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: var(--container-bg);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+#generate-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+}
+
+#generate-btn:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+}
+
+#lotto-balls-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  min-height: 80px;
+}
