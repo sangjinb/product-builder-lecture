@@ -9,6 +9,9 @@
   --card-bg: #0f3460;
   --card-text-color: #f0f2f5;
   --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  --form-bg: #0f3460;
+  --input-bg: #1a1a2e;
+  --input-border: #3c4c70;
 }
 
 body {
@@ -16,10 +19,13 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   display: flex;
+  flex-direction: column; /* Changed to column for stacking sections */
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Changed to min-height for content expansion */
   margin: 0;
+  padding: 20px; /* Added padding for overall spacing */
+  box-sizing: border-box;
 }
 
 .container {
@@ -30,6 +36,7 @@ body {
   text-align: center;
   width: 90%;
   max-width: 500px;
+  margin-bottom: 40px; /* Added margin to separate from form section */
 }
 
 h1 {
@@ -94,6 +101,79 @@ h1 {
   padding: 10px 20px;
   border-radius: 8px;
   text-align: center;
+}
+
+/* Form Section Styles */
+.form-section {
+  background-color: var(--form-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.form-section h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: var(--card-text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.3);
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(233, 69, 96, 0.3);
 }
 
 
