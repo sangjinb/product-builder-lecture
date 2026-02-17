@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@300;400;700&display=swap');
 
 :root {
   /* Generic Variables */
@@ -6,9 +6,9 @@
   --font-body: 'Noto Sans KR', sans-serif;
 
   /* Light Mode Palette */
-  --bg-color-light: #f0f2f5;
+  --bg-color-light: #f8f9fa; /* Lighter background */
   --container-bg-light: #ffffff;
-  --text-color-light: #1c1e21;
+  --text-color-light: #212529; /* Darker text */
   --primary-color-light: #007bff;
   --primary-hover-light: #0056b3;
   --card-bg-light: #e9ecef;
@@ -16,20 +16,26 @@
   --input-bg-light: #ffffff;
   --input-border-light: #ced4da;
   --footer-text-light: #6c757d;
+  --header-bg-light: #ffffff;
+  --header-link-light: #495057;
+  --header-link-hover-light: #007bff;
 
   /* Dark Mode Palette */
-  --bg-color-dark: #1a1a2e;
-  --container-bg-dark: #16213e;
-  --text-color-dark: #ffffff;
-  --primary-color-dark: #e94560;
-  --primary-hover-dark: #c63a50;
-  --card-bg-dark: #0f3460;
-  --card-text-dark: #f0f2f5;
-  --input-bg-dark: #1a1a2e;
-  --input-border-dark: #3c4c70;
+  --bg-color-dark: #121212; /* Darker background */
+  --container-bg-dark: #1e1e1e;
+  --text-color-dark: #e0e0e0; /* Lighter text */
+  --primary-color-dark: #bb86fc; /* Purple accent */
+  --primary-hover-dark: #9a67ea;
+  --card-bg-dark: #2c2c2c;
+  --card-text-dark: #ffffff;
+  --input-bg-dark: #3a3a3a;
+  --input-border-dark: #555555;
   --footer-text-dark: #adb5bd;
+  --header-bg-dark: #1e1e1e;
+  --header-link-dark: #e0e0e0;
+  --header-link-hover: #bb86fc;
   
-  --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
 
 body {
@@ -43,14 +49,20 @@ body {
   --input-bg: var(--input-bg-light);
   --input-border: var(--input-border-light);
   --footer-text: var(--footer-text-light);
+  --header-bg: var(--header-bg-light);
+  --header-link: var(--header-link-light);
+  --header-link-hover: var(--header-link-hover-light);
   
   font-family: var(--font-body);
   background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
-  padding: 20px;
   box-sizing: border-box;
   transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body.dark-mode {
@@ -64,10 +76,49 @@ body.dark-mode {
   --input-bg: var(--input-bg-dark);
   --input-border: var(--input-border-dark);
   --footer-text: var(--footer-text-dark);
+  --header-bg: var(--header-bg-dark);
+  --header-link: var(--header-link-dark);
+  --header-link-hover: var(--header-link-hover-dark);
 }
 
+/* Header Styles */
+header {
+  width: 100%;
+  background-color: var(--header-bg);
+  box-shadow: var(--shadow);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: background-color 0.3s;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.nav-link {
+  color: var(--header-link);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--header-link-hover);
+  background-color: rgba(var(--header-link-hover), 0.1);
+}
+
+
 #theme-toggle {
-  position: fixed;
+  position: absolute; /* Changed to absolute for header conflict */
   top: 20px;
   right: 20px;
   background: var(--container-bg);
@@ -82,12 +133,22 @@ body.dark-mode {
   transition: background-color 0.3s, color 0.3s;
 }
 
+#main-wrapper {
+  flex-grow: 1; /* Allows main content to take available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px; /* Added padding for overall spacing */
+}
+
 #main-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Changed to flex-start */
   align-items: center;
   width: 100%;
+  max-width: 800px; /* Constrain max width for content */
 }
 
 .container {
@@ -143,7 +204,7 @@ h1 {
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
-  padding: 20px;
+  padding: 20px; /* Adjusted padding */
 }
 
 #recommendation-card img {
@@ -161,24 +222,43 @@ h1 {
   position: relative;
   z-index: 2;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+  padding: 20px; /* Increased padding */
   border-radius: 8px;
   color: #fff;
+  max-width: 80%; /* Constrain width */
 }
 
 .snack-name {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Slightly smaller for multi-line */
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
 }
 
 .snack-description {
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger */
   margin: 10px 0 0 0;
+  line-height: 1.6;
+}
+
+.snack-details {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  text-align: left;
   line-height: 1.5;
 }
+
+.snack-details h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
 
 /* Form Section Styles */
 .form-section,
@@ -234,15 +314,15 @@ h1 {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px var(--primary-color-light);
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .dark-mode .form-group input:focus,
 .dark-mode .form-group textarea:focus {
-  box-shadow: 0 0 0 2px var(--primary-color-dark);
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .submit-btn {
@@ -270,7 +350,14 @@ footer {
   padding: 20px;
   color: var(--footer-text);
   width: 100%;
-  margin-top: 20px;
+  margin-top: 40px; /* Increased margin-top */
+  background-color: var(--container-bg); /* Match container background */
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s;
+}
+
+footer p {
+  margin: 5px 0;
 }
 
 footer a {

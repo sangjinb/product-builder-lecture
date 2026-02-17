@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이트맵 - 오늘의 야식 추천</title>
+    <link href='style.css' rel='stylesheet'>
+    <style>
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        main {
+            flex-grow: 1;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 {
+            font-family: var(--font-heading);
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <nav>
+        <a href="index.html" class="nav-link">홈</a>
+        <a href="about.html" class="nav-link">소개</a>
+        <a href="privacy.html" class="nav-link">개인정보처리방침</a>
+        <a href="terms.html" class="nav-link">이용약관</a>
+        <a href="sitemap.html" class="nav-link">사이트맵</a>
+      </nav>
+    </header>
+    <main>
+        <h1>사이트맵</h1>
+        <h2>주요 페이지</h2>
+        <ul>
+            <li><a href="index.html">홈 (야식 추천)</a></li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="privacy.html">개인정보처리방침</a></li>
+            <li><a href="terms.html">이용약관</a></li>
+            <li><a href="sitemap.html">사이트맵</a></li>
+        </ul>
+
+        <h2>야식 메뉴 (예시)</h2>
+        <ul>
+            <li><a href="index.html#chicken">치킨</a></li>
+            <li><a href="index.html#pizza">피자</a></li>
+            <li><a href="index.html#jokbal">족발</a></li>
+            <li><a href="index.html#bossam">보쌈</a></li>
+            <li><a href="index.html#tteokbokki">떡볶이</a></li>
+            <li><a href="index.html#ramen">라면</a></li>
+            <li><a href="index.html#kimchijeon">김치전</a></li>
+            <li><a href="index.html#pajeon">파전</a></li>
+            <li><a href="index.html#gopchang">곱창</a></li>
+            <li><a href="index.html#dakbal">닭발</a></li>
+            <li><a href="index.html#icecream">아이스크림</a></li>
+            <li><a href="index.html#driedsnacks">마른안주</a></li>
+            <li><a href="index.html#fruit">과일</a></li>
+            <li><a href="index.html#hamburger">햄버거</a></li>
+            <li><a href="index.html#mandu">만두</a></li>
+            <li><a href="index.html#nanobanana">나노바나나</a></li>
+            <li><a href="index.html#cornfrost">콘푸르스트</a></li>
+        </ul>
+        <p><em>야식 메뉴별 상세 페이지는 현재 동적으로 로드되며, 향후 개별 페이지로 확장될 수 있습니다.</em></p>
+    </main>
+    <footer>
+      <p>&copy; 2026 오늘의 야식 추천. All Rights Reserved.</p>
+      <p><a href="privacy.html">개인정보처리방침</a> | <a href="terms.html">이용약관</a></p>
+    </footer>
+</body>
+</html>
