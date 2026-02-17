@@ -1,75 +1,25 @@
-// Add JS here
-class LottoBall extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
-
-    connectedCallback() {
-        const number = this.getAttribute('number');
-        const color = this.getColorForNumber(parseInt(number, 10));
-        this.shadowRoot.innerHTML = `
-            <style>
-                :host {
-                    display: inline-flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    color: var(--ball-text-color, #ffffff);
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    box-shadow: var(--ball-shadow, 0 2px 8px rgba(0, 0, 0, 0.2));
-                    animation: pop-in 0.5s ease-out forwards;
-                    background-color: ${color};
-                }
-                @keyframes pop-in {
-                    0% {
-                        transform: scale(0);
-                        opacity: 0;
-                    }
-                    60% {
-                        transform: scale(1.1);
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-            </style>
-            <span>${number}</span>
-        `;
-    }
-
-    getColorForNumber(number) {
-        if (number <= 10) return '#fbc400'; // 노란색
-        if (number <= 20) return '#69c8f2'; // 파란색
-        if (number <= 30) return '#ff7272'; // 빨간색
-        if (number <= 40) return '#aaa'; // 회색
-        return '#b0d840'; // 녹색
-    }
-}
-
-customElements.define('lotto-ball', LottoBall);
+const snacks = [
+    '치킨', '피자', '족발', '보쌈', '떡볶이',
+    '라면', '김치전', '파전', '곱창', '닭발',
+    '아이스크림', '마른안주', '과일', '햄버거', '만두'
+];
 
 const generateBtn = document.getElementById('generate-btn');
-const lottoBallsContainer = document.getElementById('lotto-balls-container');
+const recommendationCard = document.getElementById('recommendation-card');
 
 generateBtn.addEventListener('click', () => {
-    lottoBallsContainer.innerHTML = '';
-    const lottoNumbers = new Set();
-    while (lottoNumbers.size < 6) {
-        lottoNumbers.add(Math.floor(Math.random() * 45) + 1);
-    }
+    // Clear previous result and animation
+    recommendationCard.innerHTML = '';
+    recommendationCard.style.animation = 'none';
+    
+    // Trigger reflow to restart animation
+    void recommendationCard.offsetWidth;
 
-    const sortedNumbers = Array.from(lottoNumbers).sort((a, b) => a - b);
+    // Get a random snack
+    const randomIndex = Math.floor(Math.random() * snacks.length);
+    const selectedSnack = snacks[randomIndex];
 
-    sortedNumbers.forEach((number, index) => {
-        setTimeout(() => {
-            const lottoBall = document.createElement('lotto-ball');
-            lottoBall.setAttribute('number', number);
-            lottoBallsContainer.appendChild(lottoBall);
-        }, index * 100);
-    });
+    // Set new animation and content
+    recommendationCard.style.animation = 'flip-in 0.6s ease-out forwards';
+    recommendationCard.textContent = selectedSnack;
 });
