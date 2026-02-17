@@ -1,31 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
 
 :root {
-  --background-color: #1a1a2e;
-  --container-bg: #16213e;
-  --primary-color: #e94560;
-  --primary-hover-color: #c63a50;
-  --text-color: #ffffff;
-  --card-bg: #0f3460;
-  --card-text-color: #f0f2f5;
-  --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  --form-bg: #0f3460;
-  --input-bg: #1a1a2e;
-  --input-border: #3c4c70;
+  /* Generic Variables */
+  --font-heading: 'Do Hyeon', sans-serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+
+  /* Light Mode Palette */
+  --bg-color-light: #f0f2f5;
+  --container-bg-light: #ffffff;
+  --text-color-light: #1c1e21;
+  --primary-color-light: #007bff;
+  --primary-hover-light: #0056b3;
+  --card-bg-light: #e9ecef;
+  --card-text-light: #343a40;
+  --input-bg-light: #ffffff;
+  --input-border-light: #ced4da;
+
+  /* Dark Mode Palette */
+  --bg-color-dark: #1a1a2e;
+  --container-bg-dark: #16213e;
+  --text-color-dark: #ffffff;
+  --primary-color-dark: #e94560;
+  --primary-hover-dark: #c63a50;
+  --card-bg-dark: #0f3460;
+  --card-text-dark: #f0f2f5;
+  --input-bg-dark: #1a1a2e;
+  --input-border-dark: #3c4c70;
+  
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 body {
-  font-family: 'Do Hyeon', sans-serif;
+  --background-color: var(--bg-color-light);
+  --container-bg: var(--container-bg-light);
+  --text-color: var(--text-color-light);
+  --primary-color: var(--primary-color-light);
+  --primary-hover-color: var(--primary-hover-light);
+  --card-bg: var(--card-bg-light);
+  --card-text-color: var(--card-text-light);
+  --input-bg: var(--input-bg-light);
+  --input-border: var(--input-border-light);
+  
+  font-family: var(--font-body);
   background-color: var(--background-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  --background-color: var(--bg-color-dark);
+  --container-bg: var(--container-bg-dark);
+  --text-color: var(--text-color-dark);
+  --primary-color: var(--primary-color-dark);
+  --primary-hover-color: var(--primary-hover-dark);
+  --card-bg: var(--card-bg-dark);
+  --card-text-color: var(--card-text-dark);
+  --input-bg: var(--input-bg-dark);
+  --input-border: var(--input-border-dark);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--container-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#main-content {
   display: flex;
-  flex-direction: column; /* Changed to column for stacking sections */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Changed to min-height for content expansion */
-  margin: 0;
-  padding: 20px; /* Added padding for overall spacing */
-  box-sizing: border-box;
+  width: 100%;
 }
 
 .container {
@@ -36,10 +94,12 @@ body {
   text-align: center;
   width: 90%;
   max-width: 500px;
-  margin-bottom: 40px; /* Added margin to separate from form section */
+  margin-bottom: 40px;
+  transition: background-color 0.3s;
 }
 
 h1 {
+  font-family: var(--font-heading);
   margin-bottom: 30px;
   font-size: 3rem;
   color: var(--text-color);
@@ -63,7 +123,7 @@ h1 {
 #generate-btn:hover {
   background-color: var(--primary-hover-color);
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(233, 69, 96, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 #recommendation-card {
@@ -72,12 +132,13 @@ h1 {
   min-height: 250px;
   background-color: var(--card-bg);
   border-radius: 10px;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
   animation: flip-in 0.6s ease-out forwards;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
 #recommendation-card img {
@@ -94,8 +155,9 @@ h1 {
 .snack-name {
   position: relative;
   z-index: 2;
+  font-family: var(--font-heading);
   font-size: 3rem;
-  color: var(--card-text-color);
+  color: #fff; /* Kept white for overlay readability */
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
@@ -105,16 +167,18 @@ h1 {
 
 /* Form Section Styles */
 .form-section {
-  background-color: var(--form-bg);
+  background-color: var(--container-bg);
   padding: 30px;
   border-radius: 12px;
   box-shadow: var(--shadow);
   text-align: center;
   width: 90%;
   max-width: 500px;
+  transition: background-color 0.3s;
 }
 
 .form-section h2 {
+  font-family: var(--font-heading);
   font-size: 2rem;
   color: var(--text-color);
   margin-bottom: 25px;
@@ -129,31 +193,37 @@ h1 {
   display: block;
   margin-bottom: 8px;
   font-size: 1.1rem;
-  color: var(--card-text-color);
+  color: var(--text-color);
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
-  width: calc(100% - 20px); /* Adjust for padding */
+  width: 100%;
   padding: 12px;
   border: 1px solid var(--input-border);
   border-radius: 6px;
   background-color: var(--input-bg);
   color: var(--text-color);
   font-size: 1rem;
-  box-sizing: border-box; /* Include padding in width calculation */
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .form-group textarea {
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.3);
+  box-shadow: 0 0 0 2px var(--primary-color-light);
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus {
+  box-shadow: 0 0 0 2px var(--primary-color-dark);
 }
 
 .submit-btn {
@@ -173,9 +243,8 @@ h1 {
 .submit-btn:hover {
   background-color: var(--primary-hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(233, 69, 96, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 @keyframes flip-in {
   from {

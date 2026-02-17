@@ -40,3 +40,29 @@ generateBtn.addEventListener('click', () => {
         <div class="snack-name">${selectedSnack.name}</div>
     `;
 });
+
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    // Save theme preference
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark-mode');
+        themeToggle.textContent = '☀️';
+    } else {
+        localStorage.removeItem('theme');
+        themeToggle.textContent = '🌙';
+    }
+});
+
+// Apply saved theme on load
+(function () {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        themeToggle.textContent = '☀️';
+    }
+})();
