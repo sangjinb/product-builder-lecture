@@ -166,22 +166,26 @@ h1 {
 }
 
 /* Form Section Styles */
-.form-section {
+.form-section,
+.comments-section {
   background-color: var(--container-bg);
   padding: 30px;
   border-radius: 12px;
   box-shadow: var(--shadow);
-  text-align: center;
   width: 90%;
   max-width: 500px;
   transition: background-color 0.3s;
+  margin-bottom: 40px;
 }
 
-.form-section h2 {
+.form-section h2,
+.comments-section h2 {
   font-family: var(--font-heading);
   font-size: 2rem;
   color: var(--text-color);
+  margin-top: 0;
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .form-group {
