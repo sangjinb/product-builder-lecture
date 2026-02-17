@@ -15,6 +15,7 @@
   --card-text-light: #343a40;
   --input-bg-light: #ffffff;
   --input-border-light: #ced4da;
+  --footer-text-light: #6c757d;
 
   /* Dark Mode Palette */
   --bg-color-dark: #1a1a2e;
@@ -26,6 +27,7 @@
   --card-text-dark: #f0f2f5;
   --input-bg-dark: #1a1a2e;
   --input-border-dark: #3c4c70;
+  --footer-text-dark: #adb5bd;
   
   --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
@@ -40,6 +42,7 @@ body {
   --card-text-color: var(--card-text-light);
   --input-bg: var(--input-bg-light);
   --input-border: var(--input-border-light);
+  --footer-text: var(--footer-text-light);
   
   font-family: var(--font-body);
   background-color: var(--background-color);
@@ -60,6 +63,7 @@ body.dark-mode {
   --card-text-color: var(--card-text-dark);
   --input-bg: var(--input-bg-dark);
   --input-border: var(--input-border-dark);
+  --footer-text: var(--footer-text-dark);
 }
 
 #theme-toggle {
@@ -139,6 +143,7 @@ h1 {
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
+  padding: 20px;
 }
 
 #recommendation-card img {
@@ -149,20 +154,30 @@ h1 {
   top: 0;
   left: 0;
   z-index: 1;
-  filter: brightness(0.8);
+  filter: brightness(0.7);
+}
+
+.snack-info {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  color: #fff;
 }
 
 .snack-name {
-  position: relative;
-  z-index: 2;
   font-family: var(--font-heading);
-  font-size: 3rem;
-  color: #fff; /* Kept white for overlay readability */
+  font-size: 2.5rem;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-align: center;
+  margin: 0;
+}
+
+.snack-description {
+  font-size: 1rem;
+  margin: 10px 0 0 0;
+  line-height: 1.5;
 }
 
 /* Form Section Styles */
@@ -248,6 +263,24 @@ h1 {
   background-color: var(--primary-hover-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--footer-text);
+  width: 100%;
+  margin-top: 20px;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 @keyframes flip-in {
